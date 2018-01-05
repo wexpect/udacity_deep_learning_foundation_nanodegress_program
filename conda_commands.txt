@@ -1,0 +1,42 @@
+https://conda.io/docs/index.html
+
+
+https://www.anaconda.com/download/#macos
+
+export PATH="/Users/rui/anaconda3/bin:$PATH"
+
+
+conda env list
+
+conda list -n env_name
+
+
+conda create -n py3 python=3 
+
+conda env export > environment.yaml
+conda env create -f environment.yaml
+
+conda remove -n py3 --all
+
+
+
+source activate py3
+source deactive
+
+
+conda list
+
+conda install numpy pandas scikit-learn matplotlib
+
+conda update numpy
+conda update -all
+
+conda remove numpy
+
+
+
+
+conda install jupyter notebook
+conda install nb_conda
+
+jupyter notebook
