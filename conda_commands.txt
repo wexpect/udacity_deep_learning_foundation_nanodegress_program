@@ -26,7 +26,7 @@ source deactive
 
 conda list
 
-conda install numpy pandas scikit-learn matplotlib
+conda install numpy pandas scikit-learn matplotlib jupyter notebook
 
 conda update numpy
 conda update -all
@@ -34,9 +34,13 @@ conda update -all
 conda remove numpy
 
 
-
-
-conda install jupyter notebook
 conda install nb_conda
 
 jupyter notebook
+
+
+
+
+
+pip install udacity-pa
+

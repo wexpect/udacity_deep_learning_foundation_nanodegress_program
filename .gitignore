@@ -2,3 +2,6 @@
 *.tar.gz
 *.pickle
 
+*.zip
+
+__pycache__
