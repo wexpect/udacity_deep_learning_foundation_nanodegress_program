@@ -5,3 +5,8 @@
 *.zip
 
 __pycache__
+
+
+RayWangAWSKeyPair.pem
+
+ec2_setup.txt
