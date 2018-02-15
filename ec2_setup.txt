@@ -1,0 +1,18 @@
+
+chmod 600 RayWangAWSKeyPair.pem
+
+
+ssh -i RayWangAWSKeyPair.pem ubuntu@34.217.212.217
+
+
+jupyter notebook --generate-config
+
+sed -ie "s/#c.NotebookApp.ip = 'localhost'/#c.NotebookApp.ip = '*'/g" ~/.jupyter/jupyter_notebook_config.py
+
+
+
+jupyter notebook --ip=0.0.0.0 --no-browser
+
+
+
+34.217.212.217:8888/?token=373fdf870a05cf0745dbfd7e27500794ea4a2b8d750445c6

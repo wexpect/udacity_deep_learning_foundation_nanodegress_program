@@ -1,13 +1,16 @@
 .ipynb_checkpoints
 *.tar.gz
-*.pickle
-
 *.zip
 
-__pycache__
+*.pickle
+
+*.jpg
+*.png
+
+*.npz
 
 *.hdf5
 
-RayWangAWSKeyPair.pem
+__pycache__
 
-ec2_setup.txt
+RayWangAWSKeyPair.pem
