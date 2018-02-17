@@ -26,7 +26,7 @@ source deactive
 
 conda list
 
-conda install numpy pandas scikit-learn matplotlib keras opencv jupyter notebook 
+conda install numpy pandas scikit-learn matplotlib keras opencv pillow tqdm jupyter notebook nb_conda
 
 conda update numpy
 conda update -all
@@ -34,7 +34,6 @@ conda update -all
 conda remove numpy
 
 
-conda install nb_conda
 
 jupyter notebook
 
