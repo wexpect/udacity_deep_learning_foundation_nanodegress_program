@@ -1,25 +1,25 @@
 .ipynb_checkpoints
+__pycache__
+.DS_Store
+
 *.tar.gz
-*.zip
-__MACOSX/
 *.gz
 
-*.pickle
-
-*.jpg
-!./part_3_convolutional_networks/lesson_7_cnn_project_dog_breed_classifier/dog-project/images/*.jpg
-
-*.png
+*.zip
+__MACOSX/
 
 *.npz
 
 *.hdf5
 
-__pycache__
-.DS_Store
+*.pickle
+
+
+part_3_convolutional_networks/lesson_2_convolutional_neural_networks/26_transfer_lerning_in_Keras/transfer-learning/dogImages/
+part_3_convolutional_networks/lesson_7_cnn_project_dog_breed_classifier/dog-project/dogImages/
+part_3_convolutional_networks/lesson_7_cnn_project_dog_breed_classifier/dog-project/lfw/
+
+
 
 RayWangAWSKeyPair.pem
-
-
-
 
