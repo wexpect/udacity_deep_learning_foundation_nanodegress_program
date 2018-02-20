@@ -2,7 +2,11 @@
 chmod 600 RayWangAWSKeyPair.pem
 
 
-ssh -i RayWangAWSKeyPair.pem ubuntu@34.217.212.217
+ssh -i RayWangAWSKeyPair.pem ubuntu@54.213.84.131
+
+
+
+On the EC2 instance:
 
 
 jupyter notebook --generate-config
@@ -11,8 +15,20 @@ sed -ie "s/#c.NotebookApp.ip = 'localhost'/#c.NotebookApp.ip = '*'/g" ~/.jupyter
 
 
 
+
+Clone a GitHub repository
+	git clone https://github.com/udacity/aind2-cnn.git
+Enter the repo directory
+	cd aind2-cnn
+Install the requirements
+	sudo python3 -m pip install -r requirements/requirements-gpu.txt
+
+
+
+
+
 jupyter notebook --ip=0.0.0.0 --no-browser
 
 
 
-34.217.212.217:8888/?token=373fdf870a05cf0745dbfd7e27500794ea4a2b8d750445c6
+54.213.84.131:8888/?token=28014f5913be6be55c57b962d4fbce957a0afb7d24719516
