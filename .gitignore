@@ -1,6 +1,7 @@
 .ipynb_checkpoints
 *.tar.gz
 *.zip
+__MACOSX/
 *.gz
 
 *.pickle
