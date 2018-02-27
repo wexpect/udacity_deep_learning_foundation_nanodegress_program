@@ -15,11 +15,5 @@ __MACOSX/
 *.pickle
 
 
-part_3_convolutional_networks/lesson_2_convolutional_neural_networks/26_transfer_lerning_in_Keras/transfer-learning/dogImages/
-part_3_convolutional_networks/lesson_7_cnn_project_dog_breed_classifier/dog-project/dogImages/
-part_3_convolutional_networks/lesson_7_cnn_project_dog_breed_classifier/dog-project/lfw/
-
-
-
 RayWangAWSKeyPair.pem
 
