@@ -1,0 +1,45 @@
+brew install python3
+brew link --overwrite python
+
+python3 -m venv myenv
+pip install --upgrade pip
+
+pip install jupyter
+pip install numpy pandas scikit-learn matplotlib pillow tqdm opencv-python 
+
+pip3 install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.6.0-py3-none-any.whl
+
+pip install keras  
+
+
+
+
+
+pip install udacity-pa
+
+udacity submit
+
+
+
+
+
+
+# OpenAI Gym
+
+git clone https://github.com/openai/gym.git
+cd gym
+pip install -e .
+
+pip install -e '.[classic_control]'
+
+cd examples/agents
+python random_agent.py
+
+
+
+# download brew
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+# install libx264 (not 265)
+brew install ffmpeg --with-fdk-aac --with-ffplay --with-freetype --with-libass --with-libquvi --with-libvorbis --with-libvpx --with-opus --with-x265
+
