@@ -1,15 +1,16 @@
 brew install python3
 brew link --overwrite python
 
-python3 -m venv myenv
+python3 -m venv env
 pip install --upgrade pip
 
 pip install jupyter
-pip install numpy pandas scikit-learn matplotlib pillow tqdm opencv-python 
+pip install numpy pandas scikit-learn matplotlib pillow tqdm opencv-python seaborn
 
 pip3 install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.6.0-py3-none-any.whl
 
 pip install keras  
+
 
 
 
