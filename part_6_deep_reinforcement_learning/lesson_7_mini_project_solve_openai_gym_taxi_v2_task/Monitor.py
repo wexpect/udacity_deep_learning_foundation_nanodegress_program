@@ -32,8 +32,9 @@ def interact(env, agent, num_episodes=20000, window=100):
     for i_episode in range(1, num_episodes+1):
         # begin the episode
         state = env.reset()
-        # env.render()
-        
+        if i_episode == num_episodes:
+            env.render()
+            
         agent.i_episode = i_episode
 
         # initialize the sampled reward
@@ -41,11 +42,12 @@ def interact(env, agent, num_episodes=20000, window=100):
         while True:
             # agent selects an action            
             action = agent.select_action(state)
-            
-            # agent performs the selected action
+                            
+            # agent performs the selected action                
             next_state, reward, done, _ = env.step(action)            
-            # env.render()            
-            
+            if i_episode == num_episodes:
+                env.render()
+                
             # agent performs internal updates based on sampled experience
             agent.step(state, action, reward, next_state, done)
             
@@ -77,6 +79,7 @@ def interact(env, agent, num_episodes=20000, window=100):
             print('\nEnvironment solved in {} episodes.'.format(i_episode), end="")
             break
             
-        if i_episode == num_episodes: print('\n')
+        if i_episode == num_episodes: 
+            print('\n')
             
     return avg_rewards, best_avg_reward, agent.Q
