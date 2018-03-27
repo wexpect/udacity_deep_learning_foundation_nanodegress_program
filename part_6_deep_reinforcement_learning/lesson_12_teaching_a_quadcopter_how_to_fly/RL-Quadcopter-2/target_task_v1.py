@@ -51,10 +51,11 @@ class TargetTaskV1():
         # reward = 300 - (abs(self.sim.pose[:3] - self.target_pos)).sum()           
 
         # ok
-        a = self.sim.pose[:3]
-        b = self.target_pos
-        bound = np.array([300.0, 300.0, 300])
-        reward = (0.5 - np.mean(np.square((a - b) / bound))) / 0.5
+        p1 = self.sim.pose[:3]
+        p2 = self.target_pos
+        env_bounds = 300.0
+        bound = np.array([env_bounds, env_bounds, env_bounds])
+        reward = (0.5 - np.mean(np.square((p1 - p2) / bound))) * 2
 
         return reward
 

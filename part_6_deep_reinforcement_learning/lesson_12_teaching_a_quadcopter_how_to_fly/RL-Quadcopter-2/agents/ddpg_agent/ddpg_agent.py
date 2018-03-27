@@ -32,9 +32,25 @@ class DDPGAgent():
         self.exploration_theta = 0.15
         self.exploration_sigma = 0.2
 
-        # no obvious improvement
-        # self.exploration_theta = 0.15
+        # not good
+        # self.exploration_theta = 0.05
+        # self.exploration_sigma = 0.1
+
+        # no improvement, and drop at last
+        # self.exploration_theta = 0.01
+        # self.exploration_sigma = 0.01
+
+        # no obvious improvement  
+        # self.exploration_theta = 0.5
         # self.exploration_sigma = 1
+
+        # closer to target, but terminate fast
+        # self.exploration_theta = 50
+        # self.exploration_sigma = 50
+
+        # bad
+        # self.exploration_theta = 0.15
+        # self.exploration_sigma = 50
 
         self.noise = OUNoise(self.action_size, self.exploration_mu, self.exploration_theta, self.exploration_sigma)
 
@@ -42,6 +58,7 @@ class DDPGAgent():
         self.buffer_size = 100000
 
         # self.batch_size = 64
+        # self.batch_size = 128  # bad for move
         self.batch_size = 512  # has improvement
         # self.batch_size = 4096  # bad
 
@@ -55,10 +72,10 @@ class DDPGAgent():
         # self.tau = 0.01  # for soft update of target parameters
         # self.tau = 0.1  # big improvement with basic implementation
         # self.tau = 0.3  # similar as 0.1
-
         # self.tau = 0.1  # flucate with L2 regularization
-        self.tau = 0.3  # stable with L2 regularization, suboptimal  for moving
-
+        self.tau = 0.3  # stable with L2 regularization, suboptimal for moving
+        # self.tau = 0.4  # 
+        # self.tau = 0.6  # one high spike for moving        
 
         # Score tracker and learning parameters
         self.total_reward = 0
@@ -119,12 +136,11 @@ class DDPGAgent():
         next_states = np.vstack([e.next_state for e in experiences if e is not None])
 
         # Get predicted next-state actions and Q values from target models
-        #     Q_targets_next = critic_target(next_state, actor_target(next_state))
-        actions_next = self.actor_target.model.predict_on_batch(next_states)
-        Q_targets_next = self.critic_target.model.predict_on_batch([next_states, actions_next])
+        next_actions = self.actor_target.model.predict_on_batch(next_states)
+        next_Q_targets = self.critic_target.model.predict_on_batch([next_states, next_actions])
 
         # Compute Q targets for current states and train critic model (local)
-        Q_targets = rewards + self.gamma * Q_targets_next * (1 - dones)
+        Q_targets = rewards + self.gamma * next_Q_targets * (1 - dones)
         self.critic_local.model.train_on_batch(x=[states, actions], y=Q_targets)
 
         # Train actor model (local)
@@ -144,3 +160,4 @@ class DDPGAgent():
 
         new_weights = self.tau * local_weights + (1 - self.tau) * target_weights
         target_model.set_weights(new_weights)
+

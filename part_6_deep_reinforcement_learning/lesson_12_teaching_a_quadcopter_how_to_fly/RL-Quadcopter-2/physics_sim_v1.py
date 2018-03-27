@@ -53,9 +53,14 @@ class PhysicsSimV1():
 
     def reset(self):
         self.time = 0.0
-        self.pose = np.array([0.0, 0.0, 10.0, 0.0, 0.0, 0.0]) if self.init_pose is None else self.init_pose
-        self.v = np.array([0.0, 0.0, 0.0]) if self.init_velocities is None else self.init_velocities
-        self.angular_v = np.array([0.0, 0.0, 0.0]) if self.init_angle_velocities is None else self.init_angle_velocities
+
+        # self.pose = np.array([0.0, 0.0, 10.0, 0.0, 0.0, 0.0]) if self.init_pose is None else self.init_pose
+        # self.v = np.array([0.0, 0.0, 0.0]) if self.init_velocities is None else self.init_velocities
+        # self.angular_v = np.array([0.0, 0.0, 0.0]) if self.init_angle_velocities is None else self.init_angle_velocities
+        self.pose = np.array([0.0, 0.0, 10.0, 0.0, 0.0, 0.0]) if self.init_pose is None else np.copy(self.init_pose)
+        self.v = np.array([0.0, 0.0, 0.0]) if self.init_velocities is None else np.copy(self.init_velocities)
+        self.angular_v = np.array([0.0, 0.0, 0.0]) if self.init_angle_velocities is None else np.copy(self.init_angle_velocities)
+
         self.linear_accel = np.array([0.0, 0.0, 0.0])
         self.angular_accels = np.array([0.0, 0.0, 0.0])
         self.prop_wind_speed = np.array([0., 0., 0., 0.])
@@ -87,13 +92,21 @@ class PhysicsSimV1():
             [(thrusts[3] - thrusts[2]) * self.l_to_rotor,
             (thrusts[1] - thrusts[0]) * self.l_to_rotor,
             0
-        ]) # (thrusts[2] + thrusts[3] - thrusts[0] - thrusts[1]) * self.T_q])  # Moment from thrust
+        ]) # (thrusts[2] + thrusts[3] - thrusts[0] - thrusts[1]) * self.T_q  # Moment from thrust
 
-#         thrust_moment = np.array([
-#             (thrusts[3] - thrusts[2]) * self.l_to_rotor,
-#             (thrusts[1] - thrusts[0]) * self.l_to_rotor,
-#             (thrusts[2] + thrusts[3] - thrusts[0] - thrusts[1]) * self.T_q
-#         ]) # (thrusts[2] + thrusts[3] - thrusts[0] - thrusts[1]) * self.T_q  # Moment from thrust
+        # self.T_q = 0.1
+        # thrust_moment = np.array(
+        #     [(thrusts[3] - thrusts[2]) * self.l_to_rotor,
+        #     (thrusts[1] - thrusts[0]) * self.l_to_rotor,
+        #     (thrusts[2] + thrusts[3] - thrusts[0] - thrusts[1]) * self.T_q 
+        # ]) #  # Moment from thrust
+
+        # self.T_q = 0.1
+        # thrust_moment = np.array([
+        #     (thrusts[0] + thrusts[3] - thrusts[1] - thrusts[2]) * self.l_to_rotor,
+        #     (thrusts[2] + thrusts[3] - thrusts[0] - thrusts[1]) * self.l_to_rotor,
+        #     (thrusts[0] + thrusts[2] - thrusts[1] - thrusts[3]) * self.T_q
+        # ])
 
         drag_moment =  self.C_d * 0.5 * self.rho * self.angular_v * np.absolute(self.angular_v) * self.areas * self.dims * self.dims
         moments = thrust_moment - drag_moment # + motor_inertia_moment
@@ -136,9 +149,15 @@ class PhysicsSimV1():
         moments = self.get_moments(thrusts)
 
         self.angular_accels = moments / self.moments_of_inertia
-        angles = self.pose[3:] + self.angular_v * self.dt + 0.5 * self.angular_accels * self.angular_accels * self.dt
+        angles = self.pose[3:] + self.angular_v * self.dt + 0.5 * self.angular_accels * self.angular_accels * self.dt        
+        
+        # TODO: should count how many rounds the copter has turned
+
         angles = (angles + 2 * np.pi) % (2 * np.pi)
+
         self.angular_v = self.angular_v + self.angular_accels * self.dt
+
+        # print('rotor_speeds', rotor_speeds, 'thrusts', thrusts, 'moments', moments, 'linear_accel', self.linear_accel, 'angular_accels', self.angular_accels)
 
         new_positions = []
         for ii in range(3):
