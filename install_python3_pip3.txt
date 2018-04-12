@@ -23,8 +23,6 @@ udacity submit
 
 
 
-
-
 # OpenAI Gym
 
 git clone https://github.com/openai/gym.git

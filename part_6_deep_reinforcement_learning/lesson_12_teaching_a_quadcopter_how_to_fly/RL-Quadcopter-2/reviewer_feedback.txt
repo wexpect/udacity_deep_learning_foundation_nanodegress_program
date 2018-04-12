@@ -1,0 +1,57 @@
+Meets Specifications
+This is a very good submission. It was a great learning experience reviewing your project. I hope my review proves to be useful to you. This project requires some more work to complete the task in a smooth manner.
+
+Other than few minor changes, your implementation is Awesome!
+
+Here are a few resources for your reference:
+i) DDPG - http://pemami4911.github.io/blog/2016/08/21/ddpg-rl.html
+ii) Ornstein–Uhlenbeck process - http://planetmath.org/ornsteinuhlenbeckprocess
+
+Congratulations on successfully completing this project!
+
+Define the Task, Define the Agent, and Train Your Agent!
+The agent.py file contains a functional implementation of a reinforcement learning algorithm.
+
+Awesome
+
+Good work using the DDPG architecture.
+Great work adjusting the hyper-parameters. Well done.
+Awesome work using batch normalization.
+The Quadcopter_Project.ipynb notebook includes code to train the agent.
+
+Awesome
+
+The code to train the agent has been very neatly included in the notebook. Well done.
+Plot the Rewards
+A plot of rewards per episode is used to illustrate how the agent learns over time.
+
+Awesome
+
+Nice job plotting the rewards per episode.
+Ideally, episode rewards should show a general progression from low to high, stabilizing at a certain level.
+Reflections
+The submission describes the task and reward function, and the description lines up with the implementation in task.py. It is clear how the reward function can be used to guide the agent to accomplish the task.
+
+Awesome
+
+Good work describing the task and reward function. Also, great work on scaling the final value to [-1, 1], to avoid instability in training.
+However, a little more detail on the task would have been great.
+The submission provides a detailed description of the agent in agent.py.
+
+Awesome
+
+Great work using the DDPG architecture.
+Good work explaining the agent, and the hyper-parameter tuning; and the architecture.
+The submission discusses the rewards plot. Ideally, the plot shows that the agent has learned (with episode rewards that are gradually increasing). If not, the submission describes in detail various attempted settings (hyperparameters and architectures, etc) that were tested to teach the agent.
+
+Awesome
+
+Here are some general tips:
+You may consider three separate agents: Takeoff, Hover and Landing.
+The starting states of these agents will vary. For example: While implementing the Landing agent, you will need to edit the starting state of the quadcopter to place it at a position above the ground (at least 10 units).
+Think of a combination of these three agents which will fulfill the end to end task for the quadcopter to takeoff, hover in-place for some duration, and then land.
+Suggestion: I suggest you to try different values for bonus reward between +10 and +50 and extra penalty between -10 and -50, and compare your results.
+
+A brief overall summary of the experience working on the project is provided, with ideas for further improving the project.
+
+I really liked reading your observations. Thanks!
