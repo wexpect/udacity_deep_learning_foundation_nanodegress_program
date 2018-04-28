@@ -2,7 +2,7 @@
 chmod 600 RayWangAWSKeyPair.pem
 
 
-ssh -i RayWangAWSKeyPair.pem ubuntu@54.202.194.4
+ssh -i RayWangAWSKeyPair.pem ubuntu@54.187.127.0
 
 
 
@@ -31,4 +31,4 @@ jupyter notebook --ip=0.0.0.0 --no-browser
 
 
 
-54.202.194.4:8888/?token=94b22866939c0a8457f2adf75beefec41c35e36216fcc150
+54.187.127.0:8888/?token=f66dcb3bb4d48d6ec3c345413aadd043b8b00e3bb9207152
