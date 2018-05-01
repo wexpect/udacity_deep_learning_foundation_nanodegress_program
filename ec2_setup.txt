@@ -2,13 +2,13 @@
 chmod 600 RayWangAWSKeyPair.pem
 
 
-ssh -i RayWangAWSKeyPair.pem ubuntu@54.187.127.0
+ssh -i RayWangAWSKeyPair.pem ubuntu@54.201.251.149
 
 
 
 On the EC2 instance:
 
-
+# One-time config
 jupyter notebook --generate-config
 
 sed -ie "s/#c.NotebookApp.ip = 'localhost'/#c.NotebookApp.ip = '*'/g" ~/.jupyter/jupyter_notebook_config.py
@@ -25,10 +25,8 @@ Install the requirements
 
 
 
-
-
+# Every time run
 jupyter notebook --ip=0.0.0.0 --no-browser
 
 
-
-54.187.127.0:8888/?token=f66dcb3bb4d48d6ec3c345413aadd043b8b00e3bb9207152
+54.201.251.149:8888/?token=a895f64dfb91bc648de800cc32e52b973411202aac1fbd39
