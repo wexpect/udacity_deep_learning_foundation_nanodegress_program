@@ -5,12 +5,31 @@ python3 -m venv env
 pip install --upgrade pip
 
 pip install jupyter
-pip install numpy pandas scikit-learn matplotlib pillow tqdm opencv-python seaborn
+pip install numpy pandas scikit-learn matplotlib pillow tqdm seaborn
 
 pip3 install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.6.0-py3-none-any.whl
 
 pip install keras  
 
+
+
+
+pip3 install opencv-python
+
+# after install, if have error when importing
+>>> import cv2
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/Users/rui/env/lib/python3.6/site-packages/cv2/__init__.py", line 4, in <module>
+    from .cv2 import *
+ImportError: dlopen(/Users/rui/env/lib/python3.6/site-packages/cv2/cv2.cpython-36m-darwin.so, 2): Library not loaded: /System/Library/Frameworks/CoreImage.framework/Versions/A/CoreImage
+  Referenced from: /Users/rui/env/lib/python3.6/site-packages/cv2/.dylibs/libavcodec.57.107.100.dylib
+  Reason: image not found
+
+
+then install downgreade version
+	pip uninstall opencv-python
+	pip3 install opencv-python==3.2.0.6
 
 
 
@@ -35,7 +54,7 @@ cd examples/agents
 python random_agent.py
 
 
-
+# for openai-gym to show images correctly
 # download brew
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
